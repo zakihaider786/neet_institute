@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - NEET Institute</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="form-container">
+        <h2>Sign Up</h2>
+        <p>Create an account to access the NEET Institute dashboard.</p>
+
+        <!-- Display the signup error or success message -->
+        <?php if (isset($_SESSION['signup_error'])): ?>
+            <p class="error"><?php echo $_SESSION['signup_error']; ?></p>
+            <?php unset($_SESSION['signup_error']); ?>
+        <?php endif; ?>
+        <?php if (isset($_SESSION['signup_success'])): ?>
+            <p class="success"><?php echo $_SESSION['signup_success']; ?></p>
+            <?php unset($_SESSION['signup_success']); ?>
+        <?php endif; ?>
+
+        <form action="signup.php" method="POST">
+            <input type="text" name="name" placeholder="Full Name" required>
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <select name="department" required>
+                <option value="O Level">O Level</option>
+                <option value="CCC">CCC</option>
+                <option value="ADCA">ADCA</option>
+                <option value="B Level">B Level</option>
+            </select>
+            <button type="submit">Sign Up</button>
+        </form>        
+        <p>Already have an account? <a href="login.php">Log in</a></p>
+    </div>
+</body>
+</html>
